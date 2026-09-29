@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f8f7f4" />
+  <title>오늘의 루틴</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#"><span class="brand-mark">✦</span><span>오늘의 루틴</span></a>
+      <div class="top-actions">
+        <button class="icon-button" id="notificationButton" aria-label="알림 설정" title="알림 설정">♧</button>
+        <button class="avatar" aria-label="프로필">A</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <p class="eyebrow" id="dateLabel">MONDAY, JUNE 10</p>
+        <h1>좋은 하루는<br /><em>작은 루틴</em>에서 시작돼요.</h1>
+      </div>
+      <div class="streak-card"><span>🔥</span><strong id="streakValue">0일</strong><small>연속 달성</small></div>
+    </section>
+
+    <section class="summary-grid" aria-label="오늘의 요약">
+      <div class="summary-card accent"><span class="summary-icon">✓</span><div><strong id="completedCount">0 / 0</strong><small>오늘 완료</small></div></div>
+      <div class="summary-card"><span class="summary-icon purple">◔</span><div><strong id="completionRate">0%</strong><small>달성률</small></div></div>
+      <div class="progress-card"><div class="progress-heading"><span>오늘의 진행률</span><strong id="progressText">0%</strong></div><div class="progress-track"><div id="progressBar" class="progress-bar"></div></div><p id="encouragement">루틴을 추가하고 오늘을 시작해보세요.</p></div>
+    </section>
+
+    <section class="content-grid">
+      <div class="routine-panel">
+        <div class="section-heading"><div><p class="eyebrow">DAILY ROUTINE</p><h2>오늘의 루틴</h2></div><button class="primary-button" id="addButton"><span>＋</span> 루틴 추가</button></div>
+        <div class="filter-row" role="tablist" aria-label="루틴 필터"><button class="filter active" data-filter="all">전체</button><button class="filter" data-filter="pending">남은 루틴</button><button class="filter" data-filter="done">완료</button></div>
+        <div id="routineList" class="routine-list"></div>
+        <div id="emptyState" class="empty-state hidden"><div>✦</div><h3>아직 루틴이 없어요</h3><p>작은 습관부터 추가해보세요.</p><button class="secondary-button" id="emptyAddButton">첫 루틴 추가하기</button></div>
+      </div>
+      <aside class="side-panel"><div class="calendar-card"><div class="calendar-title"><h3>이번 주</h3><button id="todayButton">오늘</button></div><div class="week" id="weekCalendar"></div></div><div class="tip-card"><span class="tip-icon">✺</span><h3>오늘의 한마디</h3><p>완벽하게 하려고 하기보다,<br /><strong>꾸준히 해내는 것</strong>이 더 중요해요.</p></div></aside>
+    </section>
+  </main>
+
+  <dialog id="routineDialog"><form method="dialog" id="routineForm"><div class="dialog-header"><div><p class="eyebrow">NEW ROUTINE</p><h2>루틴 추가하기</h2></div><button type="button" class="close-button" id="closeDialog">×</button></div><label>루틴 이름<input id="routineName" type="text" placeholder="예: 물 2잔 마시기" maxlength="40" required /></label><div class="form-row"><label>시간<input id="routineTime" type="time" required /></label><label>색상<select id="routineColor"><option value="mint">민트</option><option value="lavender">라벤더</option><option value="peach">피치</option><option value="blue">블루</option></select></label></div><label>메모 <span class="optional">(선택)</span><textarea id="routineNote" rows="2" placeholder="잊지 말아야 할 내용을 적어보세요."></textarea></label><div class="dialog-actions"><button type="button" class="secondary-button" id="cancelButton">취소</button><button class="primary-button" type="submit">루틴 저장</button></div></form></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
